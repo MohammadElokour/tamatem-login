@@ -1,6 +1,9 @@
 # TamatemLogin
 
-This is a simple login UI for the reason to present my skills as a Frontend Software developer
+This simple login UI includes field validation and custom theming building using Angular and Angular Material Design.
+
+## Screenshots
+![login-preview](/screenshots/tamatem-login.jpg?raw=true "login")
 
 ## Development server
 
