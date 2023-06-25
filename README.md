@@ -1,6 +1,6 @@
-# TamatemLogin
+# Tamatem Login
 
-This simple login UI includes field validation and custom theming building using Angular and Angular Material Design.
+This simple login UI includes field validation and custom theming, built using Angular and Material Design.
 
 ## Screenshots
 ![login-preview](/screenshots/tamatem-login.jpg?raw=true "login")
