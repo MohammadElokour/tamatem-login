@@ -1,0 +1,103 @@
+//--------------------MEDIA QUERY MIXINS (for responsive design)---------------------------------------------
+@mixin for-galaxy-fold-only {
+  @media (max-width: 280px) {
+    @content;
+  }
+}
+@mixin for-smaller-phone-only {
+  @media (max-width: 360px) {
+    @content;
+  }
+}
+@mixin for-phone-only {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) {
+    @content;
+  }
+}
+// -----------------------------------------------------------------------------------------------
+
+.card {
+  max-width: 500px;
+  min-height: 600px;
+  width: 90vw;
+  height: 80vh;
+  padding: 3rem;
+  @include for-phone-only {
+    height: 95vh;
+    padding: 0;
+  }
+}
+
+.content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @include for-galaxy-fold-only {
+    justify-content: flex-start;
+  }
+  gap: 1rem;
+  img {
+    width: 128px;
+    height: 128px;
+  }
+  .form {
+    width: 100%;
+    .mat-field {
+      width: 100%;
+      &:first-child {
+        margin-bottom: 0.75rem;
+        @include for-galaxy-fold-only {
+          margin-bottom: 2rem;
+        }
+      }
+      .password-rules {
+        margin: -1.2rem 0rem;
+        padding: 0 0 0 0.5rem;
+        white-space: nowrap;
+        @include for-smaller-phone-only {
+          white-space: wrap;
+        }
+      }
+    }
+    .mat-button {
+      text-transform: uppercase;
+      min-width: 98px;
+      font-weight: normal;
+      letter-spacing: 2.5px;
+      float: right;
+    }
+  }
+}
+
+.button-transition {
+  transform: translateY(100px);
+  transition: 0.5s;
+  @include for-smaller-phone-only {
+    transform: translateY(120px);
+  }
+  @include for-galaxy-fold-only {
+    transform: translateY(200px);
+  }
+}

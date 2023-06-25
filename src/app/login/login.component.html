@@ -1,0 +1,83 @@
+<mat-card class="card">
+  <mat-card-content class="content">
+    <img
+      src="https://avatars.githubusercontent.com/u/124091983"
+      alt="tamatem-logo"
+    />
+    <form class="form">
+      <mat-form-field appearance="outline" class="mat-field">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          [formControl]="loginFormGroup.controls.emailFormControl"
+          [errorStateMatcher]="matcher"
+          placeholder="Ex. john1991@gmail.com"
+        />
+        <mat-error
+          *ngIf="
+            loginFormGroup.controls.emailFormControl.hasError('email') &&
+            !loginFormGroup.controls.emailFormControl.hasError('required')
+          "
+        >
+          Please enter a valid email address
+        </mat-error>
+        <mat-error
+          *ngIf="loginFormGroup.controls.emailFormControl.hasError('required')"
+        >
+          Email is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="mat-field">
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          matInput
+          [formControl]="loginFormGroup.controls.passwordFormControl"
+          [errorStateMatcher]="matcher"
+        />
+        <!---------------------------------------IMPORTANT NOTE!----------------------------------------------->
+
+        <!-- After implementing this I relized this validation message below is not suitable for login, 
+        but is used for the registration password field.
+        You can still see the Ui and get an idea why this is essential for registration -->
+
+        <mat-error
+          *ngIf="
+            loginFormGroup.controls.passwordFormControl.hasError('pattern') &&
+            !loginFormGroup.controls.passwordFormControl.hasError('required')
+          "
+        >
+          <ul class="password-rules">
+            <li>Password must have a minimum of 8 characters</li>
+            <li>Password must have at least 1 lowercase</li>
+            <li>Password must have at least 1 uppercase</li>
+            <li>Password must have at least 1 number</li>
+            <li>Password must have at least 1 special character</li>
+          </ul>
+        </mat-error>
+
+        <!---------------------------------------------------------------------------------------------------->
+        <mat-error
+          *ngIf="
+            loginFormGroup.controls.passwordFormControl.hasError('required')
+          "
+        >
+          Password is required
+        </mat-error>
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="accent"
+        [ngClass]="
+          loginFormGroup.controls.passwordFormControl.hasError('pattern') &&
+          !loginFormGroup.controls.passwordFormControl.hasError('required')
+            ? 'mat-button button-transition'
+            : 'mat-button'
+        "
+      >
+        Login
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
